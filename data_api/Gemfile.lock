@@ -23,7 +23,7 @@ GEM
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-logic (~> 1.0, >= 1.0.2)
     ice_nine (0.11.2)
-    rack (3.0.0)
+    rack (3.0.8)
     rackup (0.2.2)
       rack (>= 3.0.0.beta1)
       webrick
@@ -64,6 +64,7 @@ GEM
 PLATFORMS
   arm64-darwin-22
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   rackup
