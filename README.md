@@ -8,7 +8,7 @@ The `data/` directory contains the original data files provided for the exercise
 
 ## Overall Perspective
 
-We built the Highwing Starter Repo with a focus on flexibility and performance of the data ingest. Given the nature of the challenge, the inconsistency of the data, and the business domain, we made the repo capable of changing to meet new data structures or changes in the business requirements. We spent most of our time building a simple expressive DSL capable of shaping the data into a consistent format along with validations to ensure that the incoming data met a standard prior to being imported into the database. Given a few unknowns, our goal was to make it as simple as possible to either reject invalid data or to morph the data to meet a specific format.
+We built the Highwing Starter Repo with a focus on flexibility and performance of the data ingest. Given the nature of the challenge, the inconsistency of the data, and the business domain, we made the code capable of changing to meet new data structures or changes in the business requirements. We built a simple, expressive DSL capable of shaping the data into a consistent format along with validations to ensure that the incoming data met a standard prior to being imported into the database. Assuming a few unknowns, our goal was to make it as simple as possible to either reject invalid data or to morph the data to meet a specific format.
 
 We wrote a very simple API to return the data as a JSON data structure.
 
