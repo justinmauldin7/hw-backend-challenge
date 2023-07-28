@@ -12,4 +12,4 @@ We built the Highwing Starter Repo with a focus on flexibility and performance o
 
 We wrote a very simple API to return the data as a JSON data structure.
 
-Finally, we chose a few tools that that are somewhat new to us (ROM, the Dry libraries), which makes the database layer not as clean as we would normally produce. ROM provides more tooling for a cleaner configuration setup, but we did not make full use of that functionality.
+Finally, we chose a few tools that that are simple and relatively dependency-light (ROM, the Dry libraries), which makes the database layer a bit more open-ended than the conventions Rails would otherwise provide. ROM provides more tooling for a cleaner configuration setup, but we did not make full use of that functionality.
