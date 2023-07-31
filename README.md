@@ -54,7 +54,7 @@ We wrote a very simple API to return the data as a JSON data structure.
 
 Finally, we chose a few tools that that are simple and relatively dependency-light (ROM, the Dry libraries), which makes the database layer a bit more open-ended than the conventions Rails would otherwise provide. ROM provides more tooling for a cleaner configuration setup, but we did not make full use of that functionality.
 
-#### 2. [Skip to Part 3](#Part-3-Upload-Encrypted-Client-CSV-Via-API)
+#### 2. [Skip to Part 3](#part-3-upload-encrypted-client-csv-via-api)
 
 ### Adventure 2: Build Using Whichever Tools You Prefer
 
