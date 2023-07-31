@@ -91,7 +91,7 @@ We are not specifying an API protocol (HTTP, Grpc, etc.) or architectural style 
 
 You're welcome to use whatever frameworks and helper libraries you see fit to implement your API. There is no need for authentication or access control just yet.
 
-#### Part 3 Upload Encrypted Client CSV Via API
+#### Part 3: Upload Encrypted Client CSV Via API
 **(Start here if using the starter codebase)**
 
 **High Level Goal:** Our brokers send us data updates and we need to make sure our stored data accurately reflects these updates. For this exercise, you'll build an API endpoint that receives an encrypted file containing updated client records. After the endpoint receives the encrypted file, you'll need to decrypt it and update the clients table. Making a user wait for the file to process could be a frustrating experience. To improve this experience, let's trigger a background job from this new API endpoint and respond with a 200 status and a message stating that the file is being processed.. If using Ruby, something like Sidekiq could be a good option but you're welcome to reach for anything you'd like. Feel free to refactor code in the starter repo!
