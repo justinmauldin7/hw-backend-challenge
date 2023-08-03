@@ -7,6 +7,9 @@ require_relative 'repositories/clients'
 require_relative 'repositories/carriers'
 require_relative 'repositories/policies'
 
+require_relative 'services/gpg_engine'
+require_relative 'services/file_decryptor'
+
 class API < Roda
   plugin :json
   plugin :typecast_params
@@ -45,16 +48,10 @@ class API < Roda
         r.post do
           encrypted_file_content = request.body.read
  
-          temp_file = Tempfile.new("TempClientUpdates")
-          temp_file.write(encrypted_file_content)
-          # If you don't close the Tempfile after writing the encrypted content to it, it won't decrypt correctly.
-          temp_file.close
-
-          decrypted_file_content = `gpg --decrypt #{temp_file.path} 2>/dev/null`
-          # This is needed so we make sure to delete the Tempfile we created after we decrypt its contents
-          temp_file.unlink 
-
-          return decrypted_file_content
+          # TODO figure out a way to get the GPG Engine to work since it is cleaner than the Tempfile method of decryption
+          # decrypted_file_content = GPG.decrypt(encrypted_file_content).read
+          
+          decrypted_file_content = FileDecryptor.execute(encrypted_file_content)
         end
       end
     end
