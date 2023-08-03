@@ -20,6 +20,12 @@ class ClientRepository < ROM::Repository[:clients]
     clients.limit(count).offset(page * count)
   end
 
+  # TODO See if there is a way to get this custom method to work
+  # def update(update_hash)
+  #   # Do something like this in here:
+  #   self.changeset(:update, update_hash).commit
+  # end
+
   def find(id)
     clients.by_pk(id)
   end
