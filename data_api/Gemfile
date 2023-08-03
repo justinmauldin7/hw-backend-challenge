@@ -10,3 +10,9 @@ gem "rom-sql"
 gem "sqlite3"
 
 gem "pry"
+
+gem "sidekiq"
+
+group :test do
+  gem 'minitest'
+end
