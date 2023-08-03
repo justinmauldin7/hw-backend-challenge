@@ -55,10 +55,21 @@ class API < Roda
           decrypted_file_content = FileDecryptor.execute(encrypted_file_content)
           decrypted_csv = CSV.parse(decrypted_file_content, :headers => true)
 
-          decrypted_csv.each do | client_content |
-            binding.pry
-          end
+          decrypted_csv.each do | row_data |
+            id = row_data.first[1]
+            client = client_repo.find(id)
 
+            if client.count == 0
+              client.changeset(:create, id: id).commit
+            end
+
+            row_data.each do | update_pair |
+              update_hash = {}
+              update_hash[update_pair[0]] = update_pair[1]
+
+              client.changeset(:update, update_hash).commit
+            end
+          end
 
         end
       end
