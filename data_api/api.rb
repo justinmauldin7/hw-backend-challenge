@@ -1,3 +1,5 @@
+require 'pry'
+
 require 'roda'
 require 'rom-sql'
 
@@ -37,6 +39,17 @@ class API < Roda
         end
       end
     end
+    
+    r.on "client_upload" do
+      r.is do
+        r.post do
+          encrypted_file_content = request.body.read
+ 
+          
+        end
+      end
+    end
+
 
     r.on "clients" do
       r.on Integer do |id|
