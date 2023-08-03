@@ -1,4 +1,5 @@
 require 'pry'
+require 'csv'
 
 require 'roda'
 require 'rom-sql'
@@ -52,6 +53,13 @@ class API < Roda
           # decrypted_file_content = GPG.decrypt(encrypted_file_content).read
           
           decrypted_file_content = FileDecryptor.execute(encrypted_file_content)
+          decrypted_csv = CSV.parse(decrypted_file_content, :headers => true)
+
+          decrypted_csv.each do | client_content |
+            binding.pry
+          end
+
+
         end
       end
     end
