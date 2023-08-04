@@ -77,6 +77,9 @@ class API < Roda
               # FIX the other data fields for a client is not updating after it doesn't exist yet,
               # and we create the new record on line 63.  All fields, but the ID are currently showing "null".
 
+              # FIX also, it looks like existing records with changes to them are not persisting their changes when you access them
+              # even though when you pry in, after the changset commit, you see they are changed.
+
               client.changeset(:update, update_hash).commit
             end
           end
