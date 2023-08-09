@@ -53,34 +53,22 @@ class API < Roda
           # decrypted_file_content = GPG.decrypt(encrypted_file_content).read
           
           decrypted_file_content = FileDecryptor.execute(encrypted_file_content)
-          decrypted_csv = CSV.parse(decrypted_file_content, :headers => true)
-
+          #TODO expecting symbols instad of strings - need to update that to be symbols
+          decrypted_csv = CSV.parse(decrypted_file_content,:headers => true,
+                    :converters => :all,
+                    :header_converters => lambda { |h| h.downcase.gsub(' ', '_').to_sym }
+                  )
 
           # TODO Break this "update" client code out into a new module or something so this route is single responsibility & not so fat.
           decrypted_csv.each do | row_data |
             id = row_data.first[1]
             client = client_repo.find(id)
+            row_data_hash = row_data.to_h
 
             if client.count == 0
-              client.changeset(:create, id: id).commit
-            end
-
-            # TODO figure out a way to pass multiple update params at once, like you can in ActiveRecord's update or create methods.
-            # That way we don't have to make an update call on each field of data that comes from the CSV file.
-            row_data.each do | update_pair |
-              update_hash = {}
-              update_hash[update_pair[0]] = update_pair[1]
-
-              # TODO figure out a way to get a custom "update" method on the ClientRepository.
-              # client.update(update_hash)
-
-              # FIX the other data fields for a client is not updating after it doesn't exist yet,
-              # and we create the new record on line 63.  All fields, but the ID are currently showing "null".
-
-              # FIX also, it looks like existing records with changes to them are not persisting their changes when you access them
-              # even though when you pry in, after the changset commit, you see they are changed.
-
-              client.changeset(:update, update_hash).commit
+              client.changeset(:create, row_data_hash).commit
+            else
+              client.changeset(:update, row_data_hash).commit
             end
           end
           
