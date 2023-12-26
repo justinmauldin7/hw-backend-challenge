@@ -1,3 +1,78 @@
+# My Approach and Thought Process
+
+In the below sections, I will be sharing some context to my take home challenge with the intended purpose of it to be used as a primer for the synchronous video discussion portion.  
+
+My goal with these details is to help those reviewing the code and participating in the synchronous video discussion to understand my thought process while completing the take home portion, address any potential concerns you might have with my implementation, and set the stage for possible areas of refactor, discussion, or continued implementation during the synchronous video discussion.
+
+
+## My Implementation Choice:
+
+For my implementation of the take home challenge, I chose Adventure 1: Start with Existing Codebase.
+
+I chose this approach because I wanted to challenge myself to implement new technologies and paradigms I have not been familiar with at this point in my software development career.
+
+I thought this gave me the best chance to learn what it truly would be like to work in your tech stack and highlight my ability and willingness to learn new technologies, and get out of my comfort zone, instead of implement something that I was comfortable and familiar with.
+
+(Additionally, here is a link to notes I took while learning these new concepts/technologies: [Take Home Challenge Notes](https://docs.google.com/document/d/1V3hV7k7ko9hgzt7iDIqaW0li8Oj4FS9yDvkYP2oOMzA/edit?usp=sharing))
+
+
+
+## Where I Left Off:
+
+-**What I got working:**
+  - I was able to successfully create the new API endpoint for the uploading of the encrypted client file and 
+  - I was able to successfully automate the decryption of the file once it has been uploaded.
+
+-**What I Implemented but isn't working:**
+  - I implemented the updating of an existing record (with ROM's .changeset :update .commit), but it doesn't seem to be persisting the update.
+  - I implemented the creation of a new record (with ROM's .changeset :create .commit), but it doesn't seem to be persisting the creation.
+
+-**What I did not implement yet:**
+  - I have not implemented the requirement for a clients name to be valid/part of it when it is created.
+
+-**What I partially Implemented:**
+(for possible use during the synchronous video discussion portion & time constraints)
+  - Asynchronous execution of the file upload, decryption & updating & creating of records via Sidekiq.
+  - Working tests in the "data_api" repo using Minitest.
+
+## My New API Endpoint:
+
+Client Upload - It takes a request body of a file.
+
+It returns the above response body of JSON:
+```
+POST /client_upload
+
+    {
+        "success": "Records successfully imported."
+    }
+```
+
+
+## Areas for Refactors/Improvements:
+
+You will notice throughout the codebase that I have "TODO" & "FIX" code comments scattered throughout.
+
+These are meant to be the areas that I have identified already that need refactors, improvements, or help getting to work during the synchronous video discussion.
+
+
+
+
+## My Love for Documentation:
+
+If it hasn't shown already, I really love writing documentation & I think it is one of my strengths as a developer.  
+
+It is born partially out of my having a terrible memory, where the only way to quickly & efficiently remember something is to write it down for quick and easy recall, rather than having to rely on my brain to do the recall slower & in less detail.
+
+Additionally, it is partially born out of my pervious career as a Customer Service rep where there is high turnover & usually poor onboarding for new hires.  If you can write down how to do something or how to learn some element of the job, it is then not siloed and lost when that person leaves the company.  It is recorded and accessible for the future even in a high turn over environment.
+
+I think the latter can be applied to software development as well.  It isn't good to have information silos and sometimes you touch parts of the code or do setup tasks once every few moths or every few years and its hard to remember how you did it or what the code is doing for the future self, other developer on the team, or new hire to the team.
+
+<br/><br/>
+<br/><br/>
+
+======================================================================================================================================
+
 # Platform / Backend Engineer Challenge
 
 Our goal with this challenge is to get a sense of how you reason through problems and build software to solve them.
@@ -19,16 +94,16 @@ More specifically, we're looking to get a sense of three things:
 
 Your code deliverable can either be an archive (tar or zip) - e.g., a downloaded snapshot from a Github repository - or just shared access to the repo itself.
 
-We expect that you may have questions - the challenge is built inside Highwing's problem domain, which can sometimes be obtuse.  Please feel free to ask clarifying questions as you see fit. We'd much rather you ask for clarification than churn in isolation. For any questions specific to the challenge, you may reach the team by emailing code-challenge@highwing.io.
+We expect that you may have questions - the challenge is built inside our problem domain, which can sometimes be obtuse.  Please feel free to ask clarifying questions as you see fit. We'd much rather you ask for clarification than churn in isolation.
 
 We don't want you to spend more than about 5 hours working on this challenge. If you don't finish everything, that's okay. Uncompleted questions are a good jumping-off point for the in-person discussion.
 
 
 ## The Problem
 
-Highwing is in the process of onboarding a new insurance broker and looking to ingest their list of active insurance policies in order to make it available to insurance carriers to identify policies that they (the carrier) may be interested in competing to write. These policies are all property and casualty insurance - i.e., no health, benefits, or life. It comes from the broker's internal management systems, which have few (if any) validation capabilities built-in.
+We are in the process of onboarding a new insurance broker and looking to ingest their list of active insurance policies in order to make it available to insurance carriers to identify policies that they (the carrier) may be interested in competing to write. These policies are all property and casualty insurance - i.e., no health, benefits, or life. It comes from the broker's internal management systems, which have few (if any) validation capabilities built-in.
 
-The ultimate goal is to expose this client's book to Highwing's carrier partners so that carrier users can spot opportunities that may be of interest to them and choose to pursue them. Chasing down an opportunity costs a fair bit of time, so we want to make sure that the data we provide to the carriers is good enough to be worth the effort they are investing to pursue. Carriers are specifically interested in policies that are renewing in the coming months - i.e., those that expire in the next 12 months. To that end, we want to evaluate this data with an eye towards two end goals - what work do we need to do with the broker to make this data ready for use, and how do we operationalize it on an ongoing basis?
+The ultimate goal is to expose this client's book to our carrier partners so that carrier users can spot opportunities that may be of interest to them and choose to pursue them. Chasing down an opportunity costs a fair bit of time, so we want to make sure that the data we provide to the carriers is good enough to be worth the effort they are investing to pursue. Carriers are specifically interested in policies that are renewing in the coming months - i.e., those that expire in the next 12 months. To that end, we want to evaluate this data with an eye towards two end goals - what work do we need to do with the broker to make this data ready for use, and how do we operationalize it on an ongoing basis?
 
 ## Choose Your Own Adventure
 
@@ -48,7 +123,7 @@ The `data/` directory contains the original data files provided for the exercise
 
 ###### Overall Perspective
 
-We built the Highwing Starter Repo with a focus on flexibility and performance of the data ingest. Given the nature of the challenge, the inconsistency of the data, and the business domain, we made the code capable of changing to meet new data structures or changes in the business requirements. We built a simple, expressive DSL capable of shaping the data into a consistent format along with validations to ensure that the incoming data met a standard prior to being imported into the database. Assuming a few unknowns, our goal was to make it as simple as possible to either reject invalid data or to morph the data to meet a specific format.
+We built the Starter Repo with a focus on flexibility and performance of the data ingest. Given the nature of the challenge, the inconsistency of the data, and the business domain, we made the code capable of changing to meet new data structures or changes in the business requirements. We built a simple, expressive DSL capable of shaping the data into a consistent format along with validations to ensure that the incoming data met a standard prior to being imported into the database. Assuming a few unknowns, our goal was to make it as simple as possible to either reject invalid data or to morph the data to meet a specific format.
 
 We wrote a very simple API to return the data as a JSON data structure.
 
@@ -126,4 +201,3 @@ $ gpg --decrypt --output ClientUpdates.csv ClientUpdates.csv.gpg
 - Records that appear in the table but not the spreadsheet should be left alone.
 - IDs for records that exist in the table should not change when the new CSV is loaded.
 - Clients require a name to be valid. We shouldn't store records that aren't valid but it would be good to know which records are invalid so we can fix them.
-
