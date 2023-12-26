@@ -4,9 +4,6 @@ In the below sections, I will be sharing some context to my take home challenge 
 
 My goal with these details is to help those reviewing the code and participating in the synchronous video discussion to understand my thought process while completing the take home portion, address any potential concerns you might have with my implementation, and set the stage for possible areas of refactor, discussion, or continued implementation during the synchronous video discussion.
 
-Finally, and to be transparent, it is meant to highlight my strengths in communication & documentation in the take home challenge portion when my technical chops might not be a strength for me yet.  
-
-(It is not mean to be or come off as self-aggrandizing. I would rather you have more information, context, & understanding in making your assessment than not enough.)
 
 ## My Implementation Choice:
 
@@ -14,34 +11,11 @@ For my implementation of the take home challenge, I chose Adventure 1: Start wit
 
 I chose this approach because I wanted to challenge myself to implement new technologies and paradigms I have not been familiar with at this point in my software development career.
 
-I thought this gave me the best chance to learn what it truly would be like to work at Highwing and your tech stack and highlight my ability and willingness to learn new technologies, and get out of my comfort zone, instead of implement something that I was comfortable and familiar with.
+I thought this gave me the best chance to learn what it truly would be like to work in your tech stack and highlight my ability and willingness to learn new technologies, and get out of my comfort zone, instead of implement something that I was comfortable and familiar with.
 
-Additionally, I chose this approach because I met informally with Emmie Hayes last week, and she mentioned during our chat that the 6 week "Batches" that Highwing does allows for you to really dive in and learn what you are implementing as a dev, instead of just finding a code snippet that gets the feature implemented the fastest.
-
-I wanted to see what that might be like, so I took this approach to truly learn what I was tasked to implement & how it works, instead of just meeting some criteria or user stories.
-
-(Additionally, here is a link to notes I took while learning these new concepts/technologies: [Highwing Take Home Challenge Notes](https://docs.google.com/document/d/1V3hV7k7ko9hgzt7iDIqaW0li8Oj4FS9yDvkYP2oOMzA/edit?usp=sharing))
-
-## My Context:
-
-In the 4 years that I have been a software developer, I have been a full-stack Rails developer, spending about 90% of my time coding standard Rails apps with the standard MVC format.
-
-The idea of micro services & utilizing Rails without it's MVC convention is a completely new paradigm to me that I have only heard about in theory, but never had exposure too.
-
-When I was at Measurabl (my last job), we were just getting into Event Driven Architecture with the implementation of Kafka for data transfer, instead of the Rails API that previously existed, but I did not get the chance to implement any Kafka tickets/features before I was laid off.
-
-That is the closest I have come to the way that Highwing & the coding challenge handles its implementation.
-
-With that said, when I said in the previous section that I wanted to learn new technologies and challenge myself, I was completely out of my comfort zone during this whole take home challenge with the exception of Ruby & some previous usage of Sidekiq & Minitest.
+(Additionally, here is a link to notes I took while learning these new concepts/technologies: [Take Home Challenge Notes](https://docs.google.com/document/d/1V3hV7k7ko9hgzt7iDIqaW0li8Oj4FS9yDvkYP2oOMzA/edit?usp=sharing))
 
 
-## My Time Commitment:
-
-To be transparent, I spent quite a few more hours than 5 on this take home challenge.  
-
-I probably spent close to 5 hours actually writing code for the challenge, but between me trying to learn about GPG, Roda, ROM, & Dry-schema, I spent several more hours just watching videos, reading documentation, reading over examples, googling, and troubleshooting over most of Wednesday & Thursday of this week.
-
-I really was enjoying working on this problem and learning about these new technologies & paradigms that are so different from Rails and its conventions, so that is another reason for investing so much time into this challenge, as well as the challenge to take my time and learn instead of speeding to a solution, and just being slower when you are working on something that is completely new to you.
 
 ## Where I Left Off:
 
@@ -74,20 +48,6 @@ POST /client_upload
     }
 ```
 
-## My Approach to code-challenge@highwing.io Help:
-
-I approached the code-challenge@highwing.io email address and reaching out to the Highwing dev team directly as a last resort type of resource if I truly was stuck chrunning on something endlessly with no movement or path forward in sight.
-
-I had no way of knowing how quickly I would get a response back, and if that would set me back on progress I could be making on the challenge for a clarifying question.
-
-With this thinking, I just made a decision in the way of trying to maximize my time to just save my clarifying questions for the synchronous video discussion, knowing that my code/implementation would be a work in progress, and we would address those questions and concerns synchronously.
-
-I understand that this thinking and decision is a tradeoff I made in my implementation & code that will have to be address in the synchronous video discussion.
-
-If this was a true working environment, I would have utilized a more preferred asynchronous communication tool such as Slack to ask my clarifying questions in real time.
-
-(I have compiled some of the clarifying questions and concerns in the "My questions" section below.)
-
 
 ## Areas for Refactors/Improvements:
 
@@ -95,43 +55,8 @@ You will notice throughout the codebase that I have "TODO" & "FIX" code comments
 
 These are meant to be the areas that I have identified already that need refactors, improvements, or help getting to work during the synchronous video discussion.
 
-## My Questions:
 
-This is my list of clarifying questions I would have asked via Slack or directly if I was pairing with someone on this implementation to get clarity on, make work, or have a discussion on.
 
-- Does Highwing use the "pgpme" gem? I tried getting their engine to work for the decryption & couldn't get it to work, so I just use the shell script instead. I think I am close and just need to figure out how to import the private.key or access the file without a password.  (I did a lot of searching and couldn't find anything, and their documentation isn't very good.) 
-
-- How do you do an update on multiple field values with ROM?  I could not figure out a way to pass in an array of options (like you can in ActiveRecord) and have it update all those fields at once.  I could only get it to work if I updated one field at a time.  (I understand this is wildly inefficient & bad implementation, but best I could come up with because I couldn't find any examples in the ROM documentation or googling)
-
-- How do you create a record in ROM with multiple field values?  Similar to the update, I couldn't find an example of multiple fields being updated at once.  I only saw them passing in the "id".
-
-- In my implementation of the challenge, I spent my whole time in the "data_api" repo.  I never touched the code in the "data_ingest" repo.  Is that to be expected? Or did I fundamentally misunderstand something about the tech stack & implementation of this code base?
-
-- There were no tests in the "data_api" repo.  Was that by design? Or was it expected that I would implement the tests for this repo?
-
-- What does the Sidekiq implementation look like for a code base like this?  I have only ever utilized Sidekiq in a Rails application, and never implemented it before.  It was previously implemented.  (I did find some exmaples of adding Sidekiq to a Sinatra app as soemthing I would think would be similar.  I put some commented out code in the config.ru file from that example, but curious what else I might be missing.)
-
-- What does the validation of the created record look like since I didn't get to that part of the implementation?  Is that done in the "data_apie" repo or is that validation done in the "data_ingest" portion?  Just looking at the code, I would assume the latter.
-
-## Testing:
-
-Whether it was a good decision or bad decision, I realized the "data_api" repo didn't have any tests and I didn't know if that was be design or expected for me to implement during the challenge, and due to the time constraints, I prioritized learning how the technologies worked & seeing if I could meet the basic requirements, rather than prioritizing writing tests for the new code I implemented, and I understand that this is a tradeoff.
-
-Had I chosen Adventure 2: Build Using Whichever Tools You Prefer, I would have built a standard Rails app with Rspec for testing and I would have prioritized implementing everything using TDD.
-
-It was engrained in us at Turing & mentioned by Leah Miller when I informally met with her that tests are always important & valued by Highwing.  
-
-That being said, I know that you are going to want to see some tests.
-
-I started laying the groundwork for adding tests during the synchronous video discussion if that was a potential area you wanted to focus on.
-
-Additionally, I have linked below the take home challenge I got when I was hired by Measurabl where I completed it in Rails, using RSpec & using TDD for your reference as well.
-
-[My Measurabl Take Home Repo](https://github.com/justinmauldin7/measurabl_api/tree/master).
-
-- [Take Home Request Tests](https://github.com/justinmauldin7/measurabl_api/tree/master/spec/requests/api/v1).
-
-- [Take Home Model Tests](https://github.com/justinmauldin7/measurabl_api/tree/master/spec/models).
 
 ## My Love for Documentation:
 
@@ -143,14 +68,10 @@ Additionally, it is partially born out of my pervious career as a Customer Servi
 
 I think the latter can be applied to software development as well.  It isn't good to have information silos and sometimes you touch parts of the code or do setup tasks once every few moths or every few years and its hard to remember how you did it or what the code is doing for the future self, other developer on the team, or new hire to the team.
 
-Finally, below is some documentation I wrote up recently when I started doing contract working fro my previous company & had to setup the codebase again from scratch after not doing it for 4 years.  It can now be used for the next developer who needs to use it.
-
-  
-[Accolader Local Setup Instructions Documenation](https://docs.google.com/document/d/1cu1K1ILdAzOWKn2fDra7xTpsO6WPlNTOFbOZ2KNcPQk/edit?usp=sharing)  
- 
-
 <br/><br/>
 <br/><br/>
+
+======================================================================================================================================
 
 # Platform / Backend Engineer Challenge
 
@@ -173,16 +94,16 @@ More specifically, we're looking to get a sense of three things:
 
 Your code deliverable can either be an archive (tar or zip) - e.g., a downloaded snapshot from a Github repository - or just shared access to the repo itself.
 
-We expect that you may have questions - the challenge is built inside Highwing's problem domain, which can sometimes be obtuse.  Please feel free to ask clarifying questions as you see fit. We'd much rather you ask for clarification than churn in isolation. For any questions specific to the challenge, you may reach the team by emailing code-challenge@highwing.io.
+We expect that you may have questions - the challenge is built inside our problem domain, which can sometimes be obtuse.  Please feel free to ask clarifying questions as you see fit. We'd much rather you ask for clarification than churn in isolation.
 
 We don't want you to spend more than about 5 hours working on this challenge. If you don't finish everything, that's okay. Uncompleted questions are a good jumping-off point for the in-person discussion.
 
 
 ## The Problem
 
-Highwing is in the process of onboarding a new insurance broker and looking to ingest their list of active insurance policies in order to make it available to insurance carriers to identify policies that they (the carrier) may be interested in competing to write. These policies are all property and casualty insurance - i.e., no health, benefits, or life. It comes from the broker's internal management systems, which have few (if any) validation capabilities built-in.
+We are in the process of onboarding a new insurance broker and looking to ingest their list of active insurance policies in order to make it available to insurance carriers to identify policies that they (the carrier) may be interested in competing to write. These policies are all property and casualty insurance - i.e., no health, benefits, or life. It comes from the broker's internal management systems, which have few (if any) validation capabilities built-in.
 
-The ultimate goal is to expose this client's book to Highwing's carrier partners so that carrier users can spot opportunities that may be of interest to them and choose to pursue them. Chasing down an opportunity costs a fair bit of time, so we want to make sure that the data we provide to the carriers is good enough to be worth the effort they are investing to pursue. Carriers are specifically interested in policies that are renewing in the coming months - i.e., those that expire in the next 12 months. To that end, we want to evaluate this data with an eye towards two end goals - what work do we need to do with the broker to make this data ready for use, and how do we operationalize it on an ongoing basis?
+The ultimate goal is to expose this client's book to our carrier partners so that carrier users can spot opportunities that may be of interest to them and choose to pursue them. Chasing down an opportunity costs a fair bit of time, so we want to make sure that the data we provide to the carriers is good enough to be worth the effort they are investing to pursue. Carriers are specifically interested in policies that are renewing in the coming months - i.e., those that expire in the next 12 months. To that end, we want to evaluate this data with an eye towards two end goals - what work do we need to do with the broker to make this data ready for use, and how do we operationalize it on an ongoing basis?
 
 ## Choose Your Own Adventure
 
@@ -202,7 +123,7 @@ The `data/` directory contains the original data files provided for the exercise
 
 ###### Overall Perspective
 
-We built the Highwing Starter Repo with a focus on flexibility and performance of the data ingest. Given the nature of the challenge, the inconsistency of the data, and the business domain, we made the code capable of changing to meet new data structures or changes in the business requirements. We built a simple, expressive DSL capable of shaping the data into a consistent format along with validations to ensure that the incoming data met a standard prior to being imported into the database. Assuming a few unknowns, our goal was to make it as simple as possible to either reject invalid data or to morph the data to meet a specific format.
+We built the Starter Repo with a focus on flexibility and performance of the data ingest. Given the nature of the challenge, the inconsistency of the data, and the business domain, we made the code capable of changing to meet new data structures or changes in the business requirements. We built a simple, expressive DSL capable of shaping the data into a consistent format along with validations to ensure that the incoming data met a standard prior to being imported into the database. Assuming a few unknowns, our goal was to make it as simple as possible to either reject invalid data or to morph the data to meet a specific format.
 
 We wrote a very simple API to return the data as a JSON data structure.
 
@@ -280,4 +201,3 @@ $ gpg --decrypt --output ClientUpdates.csv ClientUpdates.csv.gpg
 - Records that appear in the table but not the spreadsheet should be left alone.
 - IDs for records that exist in the table should not change when the new CSV is loaded.
 - Clients require a name to be valid. We shouldn't store records that aren't valid but it would be good to know which records are invalid so we can fix them.
-
