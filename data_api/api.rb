@@ -61,7 +61,8 @@ class API < Roda
 
           # TODO Break this "update" client code out into a new module or something so this route is single responsibility & not so fat.
           decrypted_csv.each do | row_data |
-            id = row_data.first[1]
+            id = row_data.first[1] # working with array
+            id = row_data[:id] # working with the hash
             client = client_repo.find(id)
             row_data_hash = row_data.to_h
 
