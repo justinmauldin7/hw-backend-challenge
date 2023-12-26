@@ -1,8 +1,18 @@
 source "https://rubygems.org"
 
+gem "gpgme"
+
 gem "roda"
-gem 'rackup'
+gem "rackup"
 
 gem "rom"
 gem "rom-sql"
 gem "sqlite3"
+
+gem "pry"
+
+gem "sidekiq"
+
+group :test do
+  gem 'minitest'
+end
